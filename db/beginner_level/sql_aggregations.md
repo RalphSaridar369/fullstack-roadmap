@@ -41,3 +41,16 @@ GROUP BY country;
 SELECT country, category, SUM(amount) AS total_sales
 FROM orders
 GROUP BY country, category;
+
+### c) GROUP BY with HAVING
+
+The `HAVING` clause is used to **filter groups** after aggregation.  
+Unlike `WHERE`, which filters rows **before aggregation**, `HAVING` filters **after `GROUP BY`**.
+
+Suppose we want to **only show countries with total sales greater than 200**:
+
+```sql
+SELECT country, SUM(amount) AS total_sales
+FROM orders
+GROUP BY country
+HAVING SUM(amount) > 200;
